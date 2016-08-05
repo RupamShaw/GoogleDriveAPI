@@ -23,6 +23,7 @@ public class MyServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws IOException {
+
         String name = req.getParameter("name");
         resp.setContentType("text/plain");
         if (name == null) {

@@ -50,6 +50,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class CredentialActivity extends Activity
         implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
+
     private TextView mOutputText;
     private Button mCallApiButton;
     ProgressDialog mProgress;

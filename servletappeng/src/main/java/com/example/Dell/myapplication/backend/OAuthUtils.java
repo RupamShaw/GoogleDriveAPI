@@ -48,6 +48,7 @@ public class OAuthUtils {
     }
 
     static GoogleAuthorizationCodeFlow initializeFlow() throws IOException {
+
         System.out.println("in initializeFlow oauth");
         return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT_REQUEST,
                 JSON_FACTORY, getClientSecrets().getDetails().getClientId(), getClientSecrets().getDetails().getClientSecret(), PERMISSION_SCOPES)

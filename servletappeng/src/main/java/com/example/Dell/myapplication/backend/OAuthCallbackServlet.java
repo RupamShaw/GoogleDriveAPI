@@ -3,9 +3,7 @@ package com.example.Dell.myapplication.backend;
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.auth.oauth2.StoredCredential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeCallbackServlet;
-import com.google.api.client.util.store.DataStore;
 
 import java.io.IOException;
 
@@ -34,10 +32,10 @@ public class OAuthCallbackServlet extends AbstractAppEngineAuthorizationCodeCall
     protected void onSuccess(HttpServletRequest req, HttpServletResponse resp,
                              Credential credential) throws ServletException, IOException {
         System.out.println("in onsuccess");
-        StoredCredential storeCredential = new StoredCredential(credential);
+/*        StoredCredential storeCredential = new StoredCredential(credential);
         DataStore<StoredCredential> newDataStore = OAuthUtils.DATA_STORE_FACTORY .getDataStore("credentials");
         //Update with actual username
-        newDataStore.set("heyyou", storeCredential);
+        newDataStore.set("heyyou", storeCredential);*/
         resp.setStatus(HttpServletResponse.SC_OK);
         //Have some nice confirmation page
         resp.sendRedirect("http://127.0.0.1:8080/newindex.html");

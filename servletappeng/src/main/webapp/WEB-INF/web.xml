@@ -9,6 +9,7 @@
         <servlet-class>com.example.Dell.myapplication.backend.OAuthCallbackServlet</servlet-class>
     </servlet>
 
+
     <servlet-mapping>
         <servlet-name>OAuthCallbackServlet</servlet-name>
         <url-pattern>/oauth2callback</url-pattern>

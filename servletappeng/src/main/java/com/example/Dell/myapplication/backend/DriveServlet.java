@@ -18,6 +18,7 @@ public class DriveServlet extends AbstractAppEngineAuthorizationCodeServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+
         System.out.println("in doget");
         AuthorizationCodeFlow authFlow = initializeFlow();
         System.out.println("in doget 1");
