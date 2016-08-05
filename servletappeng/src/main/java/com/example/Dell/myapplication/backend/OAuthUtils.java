@@ -31,7 +31,7 @@ public class OAuthUtils {
     private static final Set<String> PERMISSION_SCOPES = Collections.singleton(DriveScopes.DRIVE_METADATA);
      static final AppEngineDataStoreFactory DATA_STORE_FACTORY = AppEngineDataStoreFactory.getDefaultInstance();
     private static final String AUTH_CALLBACK_SERVLET_PATH = "/oauth2callback";
-  //  static final String MAIN_SERVLET_PATH = "/drive";
+  static final String MAIN_SERVLET_PATH = "/drivelist.jsp";
     private static final String APPLICATION_NAME =
             "Drive API Java Quickstart";
     private static GoogleClientSecrets clientSecrets = null;
@@ -51,7 +51,8 @@ public class OAuthUtils {
 
         System.out.println("in initializeFlow oauth");
         return new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT_REQUEST,
-                JSON_FACTORY, getClientSecrets().getDetails().getClientId(), getClientSecrets().getDetails().getClientSecret(), PERMISSION_SCOPES)
+                JSON_FACTORY, getClientSecrets(), PERMISSION_SCOPES)
+             //   JSON_FACTORY, getClientSecrets().getDetails().getClientId(), getClientSecrets().getDetails().getClientSecret(), PERMISSION_SCOPES)
 
                 .setDataStoreFactory(DATA_STORE_FACTORY)
                 .setAccessType("offline").build();
@@ -60,6 +61,7 @@ public class OAuthUtils {
     static String getRedirectUri(HttpServletRequest req) {
         System.out.println("Started from the bottom oauth\n");
         GenericUrl requestUrl = new GenericUrl(req.getRequestURL().toString());
+        System.out.println(" url*********"+req.getRequestURL().toString());
         requestUrl.setRawPath(AUTH_CALLBACK_SERVLET_PATH);
         return requestUrl.build();
     }

@@ -4,9 +4,12 @@ import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
 import com.google.api.client.auth.oauth2.AuthorizationCodeResponseUrl;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.appengine.auth.oauth2.AbstractAppEngineAuthorizationCodeCallbackServlet;
+import com.google.api.services.drive.model.File;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,9 +41,34 @@ public class OAuthCallbackServlet extends AbstractAppEngineAuthorizationCodeCall
         newDataStore.set("heyyou", storeCredential);*/
         resp.setStatus(HttpServletResponse.SC_OK);
         //Have some nice confirmation page
-        resp.sendRedirect("http://127.0.0.1:8080/newindex.html");
-      //  resp.sendRedirect(OAuthUtils.MAIN_SERVLET_PATH);
-        OAuthUtils.getDataFromApi(credential);
+    //    resp.sendRedirect("http://127.0.0.1:8080/newindex.html");
+        List<File> files =OAuthUtils.getDataFromApi(credential);
+        req.setAttribute("Files" , stringBuilder( files));
+        RequestDispatcher rd = req.getRequestDispatcher(OAuthUtils.MAIN_SERVLET_PATH);
+        rd.forward(req, resp);
+      //resp.sendRedirect(OAuthUtils.MAIN_SERVLET_PATH);
+
+    }
+    String stringBuilder(List<File> files){
+        // Create a new StringBuilder.
+        StringBuilder builder = new StringBuilder();
+        if (files == null || files.size() == 0) {
+            System.out.println("No files found.");
+            builder.append("No files found.");
+        } else {
+            System.out.println("Files: filename    fileid");
+            for (File file : files) {
+               // System.out.printf("%s (%s)\n", file.getName(), file.getId());
+                builder.append(file.getName() +"  "+file.getId());
+            }
+        }
+
+        // Convert to string.
+        String result = builder.toString();
+
+        // Print result.
+        System.out.println(result);
+        return result;
     }
 
     @Override
