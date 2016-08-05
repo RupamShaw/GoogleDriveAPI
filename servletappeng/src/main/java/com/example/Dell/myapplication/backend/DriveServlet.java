@@ -52,6 +52,7 @@ public class DriveServlet extends AbstractAppEngineAuthorizationCodeServlet {
 
         }
         try {
+            resp.getWriter().println("Successfully access drive in dopost of driveservlet");
             System.out.println("in dopost1");
             AuthorizationCodeFlow authFlow = initializeFlow();
             System.out.println("in dopost2");

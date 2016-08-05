@@ -19,7 +19,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="https://developers.google.com/appengine/docs/java/">Google App Engine
-                    documentation credential created successfully</a> list of files
+                    documentation credential created successfully</a>
 </li>
                 <li><a href="https://console.developers.google.com">Google Developers Console</a>
                 </li>
