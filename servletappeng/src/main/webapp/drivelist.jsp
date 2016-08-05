@@ -35,7 +35,7 @@
                 <h1>Hello, App Engine!</h1>
 <%=  request.getAttribute("Files")  %>
 ${Files}
-                <p>Enter your name and press the button below to call <code>MyServlet</code>.</p>
+                <p>Enter your name and press the button   below to call <code>MyServlet</code>.</p>
 
                 <form action="/hello" method="POST">
                     <div class="input-group">
